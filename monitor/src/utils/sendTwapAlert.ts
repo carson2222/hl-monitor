@@ -1,6 +1,8 @@
 const { EmbedBuilder, WebhookClient } = require("discord.js");
 import { WHITELIST_PERPS } from "../consts";
 import { TokenInfo } from "../types";
+import dotenv from "dotenv";
+dotenv.config();
 
 export function sendTwapAlert(tokenInfo: TokenInfo, tx: any, IMG_URL: string) {
   const value = +(tx.action?.twap?.s || 0) * +tokenInfo.price;
