@@ -7,7 +7,7 @@ import fetch from "node-fetch";
 export async function fetchBlockInfo(block: number, proxyId: number, retries = 5): Promise<BlockInfo | undefined> {
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
-      await sleep(attempt * 350);
+      await sleep(attempt - 1 * 350);
 
       const agent = proxyId >= agents.length ? undefined : new HttpsProxyAgent(agents[proxyId]);
       const info = await fetch("https://api-ui.hyperliquid.xyz/explorer", {

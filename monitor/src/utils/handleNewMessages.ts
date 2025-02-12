@@ -29,7 +29,7 @@ export async function handleNewMessages(webSocket: WebSocket) {
     }
     res.forEach(async (block: any) => {
       try {
-        if (currentProxyIndex >= agents.length + 1) currentProxyIndex = 0;
+        if (currentProxyIndex >= agents.length) currentProxyIndex = 0;
         else currentProxyIndex++;
         const info = await fetchBlockInfo(block.height, currentProxyIndex);
 

@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 export const IMG_URL =
   "https://media.discordapp.net/attachments/1331289319553372251/1336779499152347258/whal3.png?ex=67a50c6c&is=67a3baec&hm=ec4ceccadb235680349233dbc550945d46611dbbae2c5b82053b8e9cbc4213ba&=&format=webp&quality=lossless";
 
