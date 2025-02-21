@@ -36,7 +36,7 @@ function extractRMP(filePath: string, outputDir: string) {
     fs.mkdirSync(outputDir);
   }
 
-  const command = `tar -xf ${filePath} -C ${outputDir}`;
+  const command = `rpm2cpio ${filePath} | cpio -idmv -D ${outputDir}`;
   child_process.exec(command, (err, stdout, stderr) => {
     if (err) {
       console.error("Error extracting the .rmp file:", err);
