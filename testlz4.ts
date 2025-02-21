@@ -36,7 +36,7 @@ function extractRMP(filePath: string, outputDir: string) {
     fs.mkdirSync(outputDir);
   }
 
-  const command = `unzip ${filePath} -d ${outputDir}`;
+  const command = `tar -xf ${filePath} -C ${outputDir}`;
   child_process.exec(command, (err, stdout, stderr) => {
     if (err) {
       console.error("Error extracting the .rmp file:", err);
