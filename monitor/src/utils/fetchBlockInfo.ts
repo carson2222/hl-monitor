@@ -30,9 +30,9 @@ export async function fetchBlockInfo(block: number, proxyId: number, retries = 5
         if (info.status === 429) throw new Error(`Error: ${info.status} ${info.statusText}`);
       }
     } catch (error: any) {
-      console.error(`Attempt ${attempt} failed:`, error?.message);
+      console.error(`Attempt ${attempt} failed:`, error?.message, Date.now());
       if (attempt === retries) {
-        console.error("Max retries reached. Giving up.");
+        console.error("Max retries reached. Giving up.", Date.now());
         throw error;
       }
       console.log(`Retrying... (${attempt}/${retries})`);

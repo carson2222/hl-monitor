@@ -28,7 +28,7 @@ export function initWebsocket() {
     };
 
     webSocket.onerror = (error) => {
-      console.error("WebSocket error:", error);
+      console.error("WebSocket error:", error, Date.now());
       webSocket.close();
     };
   };

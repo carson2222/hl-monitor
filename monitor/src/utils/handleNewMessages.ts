@@ -13,7 +13,7 @@ export async function handleNewMessages(webSocket: WebSocket) {
   const allMids = await loadCoinMids();
 
   if (!spotMeta || !perpMeta || !allMids) {
-    console.error("Failed to load coins metadata");
+    console.error("Failed to load coins metadata", Date.now());
     return;
   }
 
@@ -41,7 +41,7 @@ export async function handleNewMessages(webSocket: WebSocket) {
         });
         // webSocket.close();
       } catch (error) {
-        console.error(error);
+        console.error(error, Date.now());
       }
     });
   };

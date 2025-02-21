@@ -7,4 +7,4 @@ export async function monitor(): Promise<void> {
   const webSocket = initWebsocket();
   handleNewMessages(webSocket);
 }
-monitor().catch(console.error);
+monitor().catch((err) => console.error(err, Date.now()));

@@ -2,7 +2,7 @@ import WebSocket from "ws";
 
 export function handleWebsocketClose(webSocket: WebSocket) {
   webSocket.onerror = (error) => {
-    console.error("WebSocket error:", error);
+    console.error("WebSocket error:", error, Date.now());
   };
 
   webSocket.onclose = () => {

@@ -15,9 +15,9 @@ export async function loadSpotMeta(): Promise<any> {
       console.log("Successfully loaded spotMeta");
       return data;
     } else {
-      console.error(`Error: ${info.status} ${info.statusText}`);
+      console.error(`Error: ${info.status} ${info.statusText}`, Date.now());
     }
   } catch (error) {
-    console.error(error);
+    console.error(error, Date.now());
   }
 }
