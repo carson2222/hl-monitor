@@ -6,6 +6,7 @@ import { loadSpotMeta } from "./loadSpotMeta";
 import { loadPerpMeta } from "./loadPerpMeta";
 import { loadCoinMids } from "./loadCoinMids";
 import { CoinsData } from "../types";
+import handleSpotDeployTx from "./handleSpotDeployTx";
 
 export async function handleNewMessages(webSocket: WebSocket) {
   const spotMeta = await loadSpotMeta();
@@ -37,6 +38,9 @@ export async function handleNewMessages(webSocket: WebSocket) {
           const type = tx.action.type;
           if (type === "twapOrder") {
             handleTwapOrderTx(tx, { spotMeta, perpMeta, allMids } as CoinsData);
+          }
+          if (type === "spotDeploy") {
+            handleSpotDeployTx(tx, { spotMeta, perpMeta, allMids } as CoinsData);
           }
         });
         // webSocket.close();
