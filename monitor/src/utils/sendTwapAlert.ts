@@ -1,5 +1,5 @@
 const { EmbedBuilder, WebhookClient } = require("discord.js");
-import { WHITELIST_PERPS } from "../consts";
+import { BLACKLISTED_SPOTS, WHITELIST_PERPS } from "../consts";
 import { TokenInfo } from "../types";
 import dotenv from "dotenv";
 dotenv.config();
@@ -23,6 +23,11 @@ export function sendTwapAlert(tokenInfo: TokenInfo, tx: any, IMG_URL: string) {
 
   if (!tokenInfo.isSpot && !WHITELIST_PERPS.includes(tokenInfo.name)) {
     console.log("This perp isn't whitelisted, returning");
+    return;
+  }
+
+  if (tokenInfo.isSpot && BLACKLISTED_SPOTS.includes(tokenInfo.name)) {
+    console.log("This spot is blacklisted, returning");
     return;
   }
 
