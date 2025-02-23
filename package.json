@@ -12,10 +12,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@msgpack/msgpack": "^3.1.0",
     "discord.js": "^14.17.3",
     "dotenv": "^10.0.0",
     "https-proxy-agent": "^7.0.6",
     "lz4": "^0.6.5",
+    "msgpack5": "^6.0.2",
     "node-fetch": "^2.6.1",
     "ws": "^8.18.0"
   },
