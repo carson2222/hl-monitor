@@ -3,7 +3,7 @@ import { TokenInfo } from "../types";
 import dotenv from "dotenv";
 dotenv.config();
 
-export function sendSpotDeployAlert(tokenInfo: TokenInfo, tx: any) {
+export function sendSpotDeployAlert(tx: any, tokenInfo: any) {
   const webhookClient = new WebhookClient({
     url: process.env.MOCK_WEBHOOK,
   });
