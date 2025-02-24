@@ -1,7 +1,7 @@
 import WebSocket from "ws";
 
-const RECONNECT_INTERVAL = 5000; // 5 seconds
-const HEARTBEAT_INTERVAL = 30000; // 30 seconds
+const RECONNECT_INTERVAL = 1000 * 2;
+const HEARTBEAT_INTERVAL = 1000 * 10;
 
 export function initWebsocket() {
   let webSocket: WebSocket;
