@@ -12,6 +12,7 @@ export async function handleNewMessages(webSocket: WebSocket) {
   const spotMeta = await loadSpotMeta();
   const perpMeta = await loadPerpMeta();
   const allMids = await loadCoinMids();
+  const coinsData: CoinsData = { spotMeta, perpMeta, allMids };
 
   if (!spotMeta || !perpMeta || !allMids) {
     console.error("Failed to load coins metadata", Date.now());
@@ -37,10 +38,10 @@ export async function handleNewMessages(webSocket: WebSocket) {
         info?.blockDetails?.txs.forEach((tx: any) => {
           const type = tx.action.type;
           if (type === "twapOrder") {
-            handleTwapOrderTx(tx, { spotMeta, perpMeta, allMids } as CoinsData);
+            handleTwapOrderTx(tx, coinsData);
           }
           if (type === "spotDeploy") {
-            handleSpotDeployTx(tx, { spotMeta, perpMeta, allMids } as CoinsData);
+            handleSpotDeployTx(tx, coinsData);
           }
         });
         // webSocket.close();
@@ -49,4 +50,8 @@ export async function handleNewMessages(webSocket: WebSocket) {
       }
     });
   };
+
+  setInterval(async () => {
+    coinsData.allMids = await loadCoinMids();
+  }, 1000 * 60 * 60 * 3);
 }

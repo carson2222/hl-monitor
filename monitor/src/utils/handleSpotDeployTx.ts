@@ -1,5 +1,6 @@
 import { CoinsData } from "../types";
 import { findSpotTokenInfo } from "./findSpotTokenInfo";
+import { loadSpotMeta } from "./loadSpotMeta";
 import { sendSpotDeployAlert } from "./sendSpotDeployAlert";
 
 interface RegisterHyperliquidity {
@@ -30,6 +31,9 @@ export default async function handleSpotDeployTx(tx: Tx, coinsData: CoinsData) {
     console.log("Invalid tokenSpotId");
     return;
   }
+
+  // Reload the spotMeta to get the latest token info
+  coinsData.spotMeta = await loadSpotMeta();
 
   const tokenInfo = findSpotTokenInfo(tokenSpotId, coinsData.spotMeta);
   console.log(tokenInfo);
