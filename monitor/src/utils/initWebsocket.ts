@@ -32,10 +32,10 @@ export function initWebsocket() {
       heartbeat();
     };
 
-    webSocket.onmessage = (message) => {
+    webSocket.addEventListener("message", (message) => {
       console.log("Received message:", message.data);
       heartbeat(); // Reset heartbeat timer on every message
-    };
+    });
 
     webSocket.onclose = (event) => {
       console.log(`WebSocket closed (Code: ${event.code}). Attempting to reconnect...`);

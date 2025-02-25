@@ -21,7 +21,7 @@ export async function handleNewMessages(webSocket: WebSocket) {
 
   let currentProxyIndex = 0;
 
-  webSocket.onmessage = (event) => {
+  webSocket.addEventListener("message", (event) => {
     //@ts-ignore
     const res = JSON.parse(event.data);
 
@@ -49,7 +49,7 @@ export async function handleNewMessages(webSocket: WebSocket) {
         console.error(error, Date.now());
       }
     });
-  };
+  });
 
   setInterval(async () => {
     coinsData.allMids = await loadCoinMids();
