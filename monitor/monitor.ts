@@ -1,10 +1,8 @@
 import dotenv from "dotenv";
-import { initWebsocket } from "./src/utils/initWebsocket";
-import { handleNewMessages } from "./src/utils/handleNewMessages";
+import { WebSocketManager } from "./src/utils/initWebsocket";
 dotenv.config();
 
 export async function monitor(): Promise<void> {
-  const webSocket = initWebsocket();
-  handleNewMessages(webSocket);
+  const webSocketManager = new WebSocketManager();
 }
 monitor().catch((err) => console.error(err, Date.now()));
