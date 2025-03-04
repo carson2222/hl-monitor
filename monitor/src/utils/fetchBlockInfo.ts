@@ -8,9 +8,8 @@ export async function fetchBlockInfo(block: number, proxyId: number, retries = 5
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       await sleep((attempt - 1) * 2000);
-
       const agent = proxyId >= agents.length ? undefined : new HttpsProxyAgent(agents[proxyId]);
-      const info = await fetch("https://api.hyperliquid.xyz/explorer", {
+      const info = await fetch("https://rpc.hyperliquid.xyz/explorer", {
         agent: agent,
         headers: {
           "Content-Type": "application/json",
