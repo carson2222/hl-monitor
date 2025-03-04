@@ -34,7 +34,7 @@ export class WebSocketManager {
   }
 
   private connect() {
-    this.webSocket = new WebSocket("wss://api-ui.hyperliquid.xyz/ws");
+    this.webSocket = new WebSocket("wss://rpc.hyperliquid.xyz/ws");
 
     this.webSocket.onopen = async () => {
       console.log("WebSocket connected.");
