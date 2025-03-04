@@ -10,8 +10,8 @@ export function sendTwapAlert(tokenInfo: TokenInfo, tx: any, IMG_URL: string) {
 
   let url = undefined;
   const direction = tx.action?.twap?.b;
-  const user = `https://rpc.hyperliquid.xyz/explorer/address/${tx?.user || "ERROR"}`;
-  const hash = `https://rpc.hyperliquid.xyz/explorer/tx/${tx?.hash || "ERROR"}`;
+  const user = `https://app.hyperliquid.xyz/explorer/address/${tx?.user || "ERROR"}`;
+  const hash = `https://app.hyperliquid.xyz/explorer/tx/${tx?.hash || "ERROR"}`;
 
   if (value >= 1000 * 1000) url = process.env.TWAP_WEBHOOK_1M;
   else if (value >= 100 * 1000) url = process.env.TWAP_WEBHOOK_100K;
