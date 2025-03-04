@@ -1,6 +1,6 @@
 export async function loadCoinMids(): Promise<any> {
   try {
-    const info = await fetch("https://rpc.hyperliquid.xyz/info", {
+    const info = await fetch("https://api.hyperliquid.xyz/info", {
       headers: {
         "Content-Type": "application/json",
       },
